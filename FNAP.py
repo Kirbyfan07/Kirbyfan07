@@ -8,6 +8,8 @@ fox = 0
 bird = 0
 light_on_L = False
 light_on_R = False
+door_close_L = False
+door_close_R = False
 cams_on= False
 
 while start==True:
@@ -49,6 +51,12 @@ while start==True:
 
 while alive==True:
     time=time-1
+    if door_close_L==True:
+        power=power-1
+        print("you hear the grinding of the gears in the door to your left")
+    if door_close_R==True:
+        power=power-1
+        print("you hear the grinding of the gears in the door to your right")
     if light_on_L==True:
         power=power-1
         print("you hear the buzzing of the lights to your left")
@@ -60,11 +68,11 @@ while alive==True:
         print("you look at the left door and it's buttons")
         look_left=True
         look_right=False
-    if action =="right":
+    elif action =="right":
         print("you look at the right door and it's buttons")
         look_left=False
         look_right=True
-    if action == "light":
+    elif action == "light":
         if look_left == True:
             if light_on_L == True:
                 print("You turn the left light off")
@@ -81,14 +89,47 @@ while alive==True:
                 light_on_R = True
         else:
             print ("your are not looking at a light button")
-        
+    elif action == "door":
+        if look_left == True:
+            if door_close_L == True:
+                print("You open the left door")
+                door_close_L = False
+            else:
+                print("you shut the left door")
+                door_close_L = True
+        elif look_right == True:
+            if door_close_R == True:
+                print("You open the right door")
+                door_close_R = False
+            else:
+                print("you shut the right door")
+                door_close_R = True
+        else:
+            print ("your are not looking at a door")
+    elif action == "cams":
+        look_left=False
+        look_right=False
+        cams_on=True
+        print("you turn to your cameras systems")
+    else:
+        print("you wait as time pass")
+    
     while cams_on == True:
+        time=time-1
+        power=power-1
+        if door_close_L==True:
+            power=power-1
+            print("you hear the grinding of the gears in the door to your left")
+        if door_close_R==True:
+            power=power-1
+            print("you hear the grinding of the gears in the door to your right")
         if light_on_L==True:
             power=power-1
             print("you hear the buzzing of the lights to your left")
         if light_on_R==True:
             power=power-1
             print("you hear the buzzing of the lights to your right")
+        if cams == 1:
+            print("the main stage, where the manin band play, the farthest part of this place")
         action=input("what do you do? (input action)").lower().strip()
-   
-    
+        
