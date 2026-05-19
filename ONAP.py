@@ -1,20 +1,23 @@
 start= True
-time = 91
-power = 153
-cams = 1
-rabbit = 1
-bird = 1
-fox = 0
-bear = 0
-kill_bear = 0
-light_on_L = False
-light_on_R = False
-door_close_L = False
-door_close_R = False
-cams_on = False
-power_out = False
-
+ 
 while start==True:
+    time = 91
+    power = 153
+    cams = 1
+    move_rabbit = 1
+    move_bird = 1
+    move_fox = 0
+    move_bear = 0
+    kill_bear = 0
+    dead_bear = False
+    look_left =False
+    look_right = False
+    light_on_L = False
+    light_on_R = False
+    door_close_L = False
+    door_close_R = False
+    cams_on = False
+    power_out = False
     print("One Night At Python's")
     action=input("enter mode ('info' 'play' 'quit') ").lower().strip()
     if action=="quit":
@@ -61,14 +64,15 @@ while alive==True:
         print("it's 3am, the start of your shift")
     if time== 60:
         print("it's now 4am")
+        fox=1
     if time==30:
         print("it's now 5am")
-        bear=1
+        move_bear=1
     if time==0:
         print("it's now 6am, your shift has ended")
         print("you win")
+        start=True
         alive=False
-        break
     if door_close_L==True:
         power=power-1
         print("you hear the grinding of the gears in the door to your left")
@@ -81,19 +85,29 @@ while alive==True:
     if light_on_R==True:
         power=power-1
         print("you hear the buzzing of the lights to your right")
+        if look_right==True:
+            if move_bear >= 11 and kill_bear == False :
+                print("you see the bear standing at the door, it looks looks like it not going to leave")
+            if move_bear < 11 or kill_bear == True:
+                print("there nothing there")
     if power<0 or power==0:
         print("the power run out")
         power_out=True
-    if bear == 11:
-        kill_bear=1
+    if not fox == 0:
+        fox=fox+1
+    if not move_bear == 0:
+        move_bear=move_bear+1
+    if move_bear == 11:
+        kill_bear = 1
     if kill_bear >= 1:
         if door_close_R == False:
-            if kill_bear== 3:
-                kill_bear==-1
+            if kill_bear == 3:
+                kill_bear=0
+                dead_bear=True
             kill_bear = kill_bear+1
         else:
             kill_bear=1
-    if kill_bear == -1:
+    if dead_bear == True:
         print("you feel like the bear is heading inside your office")
     action=input("what do you do? (input action) ").lower().strip()
     if action =="left":
@@ -119,7 +133,7 @@ while alive==True:
             else:
                 print("you turn the right light on")
                 light_on_R = True
-                if bear >= 11 and not kill_bear <= 4:
+                if bear >= 11 and kill_bear == False :
                     print("you see the bear standing at the door, it looks looks like it not going to leave")
         else:
             print ("your are not looking at a light button")
@@ -129,7 +143,7 @@ while alive==True:
                 print("You open the left door")
                 door_close_L = False
             else:
-                if kill_bear ==-1:
+                if dead_bear ==True:
                     print("the door button is not working")
                 else:
                     print("you shut the left door")
@@ -139,7 +153,7 @@ while alive==True:
                 print("You open the right door")
                 door_close_R = False
             else:
-                if kill_bear ==-1:
+                if dead_bear ==True:
                     print("the door button is not working")
                 else:
                     print("you shut the right door")
@@ -163,13 +177,15 @@ while alive==True:
             print("it's now 5am")
             bear = 1
         if time==0:
-            print("it's now 6am, your shift has ended")
+            print("it's now 6am, you turn off the cameras, because your shift has ended")
             print("you win")
-            alive=False
             start=True
+            alive=False
             break
-        if not bear == 0:
-            bear=bear+1
+        if not fox == 0:
+            fox=fox+1
+        if not move_bear == 0:
+            move_bear=move_bear+1
         if door_close_L==True:
             power=power-1
             print("you hear the grinding of the gears in the door to your left")
@@ -189,96 +205,99 @@ while alive==True:
             break
         if cams == 1:
             print("the main stage, the farthest part of this place")
-            if bear == 0:
+            if move_bear == 0:
                 print("you see the bear in the middle of the stage, inactive")
-            if bear == 1 or bear == 2:
+            if move_bear == 1 or move_bear == 2:
                 print("you see the bear in the middle of the stage, eyes staring at the cameras")
-                bear=bear-1
+                move_bear=move_bear-1
         if cams == 2:
             print("the main siting area, the top middle of the map")
-            if bear == 3 or bear == 4:
+            if move_bear == 3 or move_bear == 4:
                 print("you see the bear's eyes hiding in the shadows, staring at the cameras")
-                bear=bear-1
+                move_bear=move_bear-1
         if cams == 3:
             print("the kids area, the top left of the map")
+            if fox <= 2 and not fox == 0:
+                print("you see an eye peeking out from the curtains blocking the mini stage")
+                fox=fox-0.5
         if cams == 4:
             print("the kitchen, the top right of the map")
-            if bear == 5 or bear == 6:
+            if move_bear == 5 or move_bear == 6:
                 print("you see the bear at the edge of the cameras, head turned to the camera")
-                bear=bear-1
+                move_bear=move_bear-1
         if cams == 5:
             print("the hallway, the middle left of the map")
         if cams == 6:
             print("the storage room, the middle right of the map")
-            if bear == 7 or bear == 8:
+            if move_bear == 7 or move_bear == 8:
                 print("you see the bear hiding behind a shelf, only the eyes are visable")
-                bear=bear-1
+                move_bear=move_bear-1
         if cams == 7:
             print("the reception area, close to your left door")
         if cams == 8:
             print("the staff room, close to your right door")
-            if bear == 9 or bear == 10:
+            if move_bear == 9 or move_bear == 10:
                 print("you see the bear by the door leading to your office, looking at where you stand")
-                bear-1
-        if bear == 11:
-            kill_bear=1
+                move_bear-1
+        if move_bear == 11:
+            kill_bear = 1
         action=input("what do you do? (input action) ").lower().strip()
         if action == "1":
             if cams == 1:
                 print("your already on that camera")
             else:
-                cams == 1
+                cams = 1
                 print("you change to camera 1")
         elif action == "2":
             if cams == 2:
                 print("your already on that camera")
             else:
-                cams == 2
+                cams = 2
                 print("you change to camera 2")
         elif action == "3":
             if cams == 3:
                 print("your already on that camera")
             else:
-                cams == 3
+                cams = 3
                 print("you change to camera 3")
         elif action == "4":
             if cams == 4:
                 print("your already on that camera")
             else:
-                cams == 4
+                cams = 4
                 print("you change to camera 4")
         elif action == "5":
             if cams == 5:
                 print("your already on that camera")
             else:
-                cams == 5
+                cams = 5
                 print("you change to camera 5")
         elif action == "6":
             if cams == 6:
                 print("your already on that camera")
             else:
-                cams == 6
+                cams = 6
                 print("you change to camera 6")
         elif action == "7":
             if cams == 7:
                 print("your already on that camera")
             else:
-                cams == 7
+                cams = 7
                 print("you change to camera 7")
         elif action == "8":
             if cams == 8:
                 print("your already on that camera")
             else:
-                cams == 8
+                cams = 8
                 print("you change to camera 8")
         elif action == "cams":
             print("you turn off the camera systems")
             cams_on=False
-            if kill_bear == -1:
+            if dead_bear == True:
                 print("then suddenly, you are grabed by the bear, it lifted you to it's mouth and bite your head")
                 print("your have been killed")
-                alive=False
                 start=True
+                alive=False
         else:
            print("you stay on the same camera your on")
    
@@ -292,8 +311,8 @@ while alive==True:
         if time==0:
             print("it's now 6am, your shift has ended, just in time")
             print("you win")
-            alive=False
             start=True
+            alive=False
             break
         print("you see two glowing eyes by you door")
         time=time-1
@@ -304,8 +323,8 @@ while alive==True:
         if time==0:
             print("it's now 6am, your shift has ended, just in time")
             print("you win")
-            alive=False
             start=True
+            alive=False
             break
         print("your hear some music coming from the eye")
         time=time-1
@@ -316,8 +335,8 @@ while alive==True:
         if time==0:
             print("it's now 6am, your shift has ended, just in time")
             print("you win")
-            alive=False
             start=True
+            alive=False
             break
         print("the eyes are now infornt of you")
         time=time-1
@@ -328,8 +347,8 @@ while alive==True:
         if time==0:
             print("it's now 6am, your shift has ended, just in time")
             print("you win")
-            alive=False
             start=True
+            alive=False
             break
         print("the eyes are now gone")
         time=time-1
@@ -340,8 +359,8 @@ while alive==True:
         if time==0:
             print("it's now 6am, your shift has ended, just in time")
             print("you win")
-            alive=False
             start=True
+            alive=False
             break
         print("a hand grabs your head, you look up and see the eyes had returned, they slam you onto the floor")
         print("the force of the slam has killed you")
