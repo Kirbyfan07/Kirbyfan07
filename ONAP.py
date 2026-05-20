@@ -7,6 +7,9 @@ while start==True:
     move_rabbit = 1
     move_bird = 1
     move_fox = 0
+    kill_fox = 0
+    move_fox_dec = 0
+    dead_fox = False
     move_bear = 0
     kill_bear = 0
     dead_bear = False
@@ -64,13 +67,14 @@ while alive==True:
         print("it's 3am, the start of your shift")
     if time== 60:
         print("it's now 4am")
-        fox=1
+        move_fox=1
     if time==30:
         print("it's now 5am")
         move_bear=1
     if time==0:
         print("it's now 6am, your shift has ended")
         print("you win")
+        print("leftover power: " + power + "/153")
         start=True
         alive=False
     if door_close_L==True:
@@ -93,22 +97,49 @@ while alive==True:
     if power<0 or power==0:
         print("the power run out")
         power_out=True
-    if not fox == 0:
-        fox=fox+1
+    if not move_fox == 0:
+        move_fox=move_fox+1
+    if move_fox == 7 or move_fox==7.5:
+            kill_fox=1
+    if kill_fox >= 1:
+        if door_close_L == False:
+            if kill_fox == 5:
+                kill_fox=0
+                dead_fox=True
+            kill_fox = kill_fox+1
+        else:
+            if kill_fox == 5:
+                kill_fox=0
+                move_fox_dec=move_fox-0.5
+                move_fox=move_fox_dec-1
+                if move_fox==-0.5:
+                    move_fox=0.5
+                print("you hear a slam at the right door, then a footstep heading away from the door")
+            else:
+                kill_fox= kill_fox + 1
+    if dead_fox==True:
+        print("the fox ran and jumped onto your with it's jaw open...")
+        print("it started to ripping you to shreds, killing you")
+        start=True
+        alive=False
     if not move_bear == 0:
         move_bear=move_bear+1
     if move_bear == 11:
         kill_bear = 1
-    if kill_bear >= 1:
-        if door_close_R == False:
-            if kill_bear == 3:
-                kill_bear=0
-                dead_bear=True
-            kill_bear = kill_bear+1
-        else:
-            kill_bear=1
+        if kill_bear >= 1:
+            if door_close_R == False:
+                if kill_bear == 3:
+                    kill_bear=0
+                    dead_bear=True
+                kill_bear = kill_bear+1
+            else:
+                if kill_bear == 3:
+                    kill_bear=1
+                    print("you hear a series of knock on the right door")
+                else:
+                    kill_bear = kill_bear+1
     if dead_bear == True:
-        print("you feel like the bear is heading inside your office")
+        print("you feel like the bear is inside your office")
     action=input("what do you do? (input action) ").lower().strip()
     if action =="left":
         print("you look at the left door and it's buttons")
@@ -179,11 +210,12 @@ while alive==True:
         if time==0:
             print("it's now 6am, you turn off the cameras, because your shift has ended")
             print("you win")
+            print("leftover power: " + power + "/153")
             start=True
             alive=False
             break
-        if not fox == 0:
-            fox=fox+1
+        if not move_fox == 0:
+            move_fox=move_fox+1
         if not move_bear == 0:
             move_bear=move_bear+1
         if door_close_L==True:
@@ -203,6 +235,45 @@ while alive==True:
             power_out=True
             cams_on=False
             break
+        if move_fox == 7 or move_fox==7.5:
+            kill_fox=1
+        if kill_fox >= 1:
+            if door_close_L == False:
+                if kill_fox == 5:
+                    kill_fox=0
+                    dead_fox=True
+                kill_fox = kill_fox+1
+            else:
+                if kill_fox == 5:
+                    kill_fox=0
+                    move_fox_dec=move_fox-0.5
+                    move_fox=move_fox_dec-1
+                    if move_fox==-0.5:
+                        move_fox=0.5
+                    print("you hear a slam at the right door, then a footstep heading away from the door")
+                else:
+                    kill_fox= kill_fox + 1
+        if dead_fox==True:
+            print("will on the cameras the fox ran into you and slamed you into the cameras screen...")
+            print("the shards form the screen cause you to bleed to death")
+            start=True
+            alive=False
+        if move_bear == 11:
+            kill_bear = 1
+        if kill_bear >= 1:
+            if door_close_R == False:
+                if kill_bear == 3:
+                    kill_bear=0
+                    dead_bear=True
+                kill_bear = kill_bear+1
+            else:
+                if kill_bear == 3:
+                    kill_bear=1
+                    print("you hear a series of knock on the right door")
+                else:
+                    kill_bear = kill_bear+1
+        if dead_bear == True:
+            print("you feel like the bear is inside your office")
         if cams == 1:
             print("the main stage, the farthest part of this place")
             if move_bear == 0:
@@ -217,9 +288,15 @@ while alive==True:
                 move_bear=move_bear-1
         if cams == 3:
             print("the kids area, the top left of the map")
-            if fox <= 2 and not fox == 0:
-                print("you see an eye peeking out from the curtains blocking the mini stage")
-                fox=fox-0.5
+            if move_fox <= 2 and not move_fox == 0:
+                print("you see an eye peeking out from the curtains of the mini stage")
+                move_fox=move_fox-0.5
+            if move_fox > 2 and move_fox <= 4:
+                print("you see the fox's head poping out of the curtain of the mini stage")
+            if move_fox > 4 and move_fox <= 6:
+                print("you see the fox steping out of the slightly open curtain of the mini stage")
+            if move_fox >= 7:
+                print("you see the open curtain of the mini stage, no fox in sight")
         if cams == 4:
             print("the kitchen, the top right of the map")
             if move_bear == 5 or move_bear == 6:
@@ -311,6 +388,7 @@ while alive==True:
         if time==0:
             print("it's now 6am, your shift has ended, just in time")
             print("you win")
+            print("leftover power: " + power + "/153")
             start=True
             alive=False
             break
@@ -323,6 +401,7 @@ while alive==True:
         if time==0:
             print("it's now 6am, your shift has ended, just in time")
             print("you win")
+            print("leftover power: " + power + "/153")
             start=True
             alive=False
             break
@@ -335,6 +414,7 @@ while alive==True:
         if time==0:
             print("it's now 6am, your shift has ended, just in time")
             print("you win")
+            print("leftover power: " + power + "/153")
             start=True
             alive=False
             break
@@ -347,6 +427,7 @@ while alive==True:
         if time==0:
             print("it's now 6am, your shift has ended, just in time")
             print("you win")
+            print("leftover power: " + power + "/153")
             start=True
             alive=False
             break
@@ -359,6 +440,7 @@ while alive==True:
         if time==0:
             print("it's now 6am, your shift has ended, just in time")
             print("you win")
+            print("leftover power: " + power + "/153")
             start=True
             alive=False
             break
