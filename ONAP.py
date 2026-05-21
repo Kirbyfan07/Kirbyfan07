@@ -1,6 +1,7 @@
 start= True
  
 while start==True:
+    #night reset
     time = 91
     power = 153
     cams = 1
@@ -9,6 +10,7 @@ while start==True:
     move_fox = 0
     kill_fox = 0
     move_fox_dec = 0
+    fox_warning=False
     dead_fox = False
     move_bear = 0
     kill_bear = 0
@@ -93,7 +95,7 @@ while alive==True:
             if move_bear >= 11 and kill_bear == False :
                 print("you see the bear standing at the door, it looks looks like it not going to leave")
             if move_bear < 11 or kill_bear == True:
-                print("there nothing there")
+                print("the bear is gone?")
     if power<0 or power==0:
         print("the power run out")
         power_out=True
@@ -109,6 +111,7 @@ while alive==True:
             kill_fox = kill_fox+1
         else:
             if kill_fox == 5:
+                fox_warning = False
                 kill_fox=0
                 move_fox_dec=move_fox-0.5
                 move_fox=move_fox_dec-1
@@ -245,6 +248,7 @@ while alive==True:
                 kill_fox = kill_fox+1
             else:
                 if kill_fox == 5:
+                    fox_warning=False
                     kill_fox=0
                     move_fox_dec=move_fox-0.5
                     move_fox=move_fox_dec-1
@@ -314,6 +318,10 @@ while alive==True:
                 move_bear=move_bear-1
         if cams == 7:
             print("the reception area, close to your left door")
+            if kill_fox >= 1 and fox_warning==False:
+                print("the fox is dashing and sliding to your office")
+                kill_fox=2
+                fox_warning=True
         if cams == 8:
             print("the staff room, close to your right door")
             if move_bear == 9 or move_bear == 10:
