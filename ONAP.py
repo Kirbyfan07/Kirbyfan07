@@ -293,10 +293,13 @@ while alive==True:
                 move_fox=move_fox-0.5
             if move_fox > 2 and move_fox <= 4:
                 print("you see the fox's head poping out of the curtain of the mini stage")
+                move_fox=move_fox-0.5
             if move_fox > 4 and move_fox <= 6:
                 print("you see the fox steping out of the slightly open curtain of the mini stage")
+                move_fox=move_fox-0.5
             if move_fox >= 7:
                 print("you see the open curtain of the mini stage, no fox in sight")
+                move_fox=move_fox-0.5
         if cams == 4:
             print("the kitchen, the top right of the map")
             if move_bear == 5 or move_bear == 6:
