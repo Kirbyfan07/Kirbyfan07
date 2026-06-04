@@ -35,21 +35,22 @@ def print_info():
     print("\nTo survive you need to do the following:")
     print("1. Check doors and cams for threats")
     print("2. If threats are at the doors, close them")
-    print("3. The fox will grow in anger when not watched, close the door he rushes to")
+    print("3. The fox will show off and slow down when watched, close the door he rushes to")
     print("4. The bear hates the light in the cams and will stop if looked at, but always heads to you")
-    print("5. The rabbit and the bird stick to one side, but are fast")
+    print("5. The rabbit and the bird stick to one side, but are fast in differnt ways")
+    print("6. One is fast to get to your office, the other is fast to get in")
     print("Every action costs power, don't run out")
     print("\nInputs are the following:")
     print("1. 'wait' lets time move without moving")
-    print("2. 'left' go to left door")
-    print("3. 'right' go to right door")
+    print("2. 'left' go to left side of your office")
+    print("3. 'right' go to right side of your office")
     print("4. 'light' turn lights on/off (costs 1 power per turn while on)")
     print("5. 'door' open/close door (costs 1 power per turn while shut)")
     print("6. 'cams' open camera monitor (costs 1 power per turn while in), While in cams, inputs are:")
     print("   '1' to '8' to swap camera channels")
     print("   'exit' to close monitor and return to office")
+    print("   Going to cams bring you to the center of your office")
     print("====================================================\n")
-
 
 def play_game():
     state = initialize_game()
@@ -120,7 +121,10 @@ def play_game():
                     state["move_fox"] = state["move_fox_dec"] - 1
                     if state["move_fox"] == -0.5:
                         state["move_fox"] = 0.5
-                    print("--- You hear a slam at the left door, then footsteps heading away from the door ---")
+                    if state["light_on_L"] and state["look_left"]:
+                        print("--- you hear s slam at the left door, the see the fox walk away from the door ---")
+                    else:
+                        print("--- You hear a slam at the left door, then footsteps heading away from the door ---")
                 else:
                     state["kill_fox"] += 1
 
@@ -460,6 +464,7 @@ def play_game():
             print("Game over")
             print("====================================================\n")
             return False
+            
 def main():
     while True:
         print("An Half Night In Python")
