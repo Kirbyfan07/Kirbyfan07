@@ -13,6 +13,7 @@ def initialize_game():
         "move_bear": 0,
         "kill_bear": 0,
         "dead_bear": False,
+        "dead_bear_force": 6,
         "look_left": False,
         "look_right": False,
         "light_on_L": False,
@@ -79,27 +80,25 @@ def play_game():
         # Power drain from doors and lights
         if state["door_close_L"]:
             state["power"] -= 1
-            print("You hear the grinding of the gears in the door to your left")
+            print("--- You hear the grinding of the gears in the door to your left ---")
         if state["door_close_R"]:
             state["power"] -= 1
-            print("You hear the grinding of the gears in the door to your right")
+            print("--- You hear the grinding of the gears in the door to your right ---")
         if state["light_on_L"]:
             state["power"] -= 1
-            print("You hear the buzzing of the lights to your left")
+            print("--- You hear the buzzing of the lights to your left ---")
         if state["light_on_R"]:
             state["power"] -= 1
-            print("You hear the buzzing of the lights to your right")
+            print("--- You hear the buzzing of the lights to your right ---")
             if state ["look_right"]:
                 if state ["move_bear"] >= 11 and not state ["kill_bear"]:
-                    print("you see the bear standing at the door, it looks looks like it not going to leave")
+                    print("--- you see the bear standing at the door, it looks looks like it not going to leave ---")
                 if state ["move_bear"] >= 11 and state ["kill_bear"]:
-                    print("the bear is gone?")
+                    print("--- the bear is gone? ---")
 
         # Check power out
         if state["power"] <= 0:
-            print("\n====================================================")
-            print("The power ran out")
-            print("====================================================\n")
+            print("--- The power ran out ---")
             state["power_out"] = True
 
         # Fox movement and attack logic
@@ -122,7 +121,7 @@ def play_game():
                     state["move_fox"] = state["move_fox_dec"] - 1
                     if state["move_fox"] == -0.5:
                         state["move_fox"] = 0.5
-                    print("You hear a slam at the right door, then a footstep heading away from the door")
+                    print("--- You hear a slam at the left door, then footsteps heading away from the door ---")
                 else:
                     state["kill_fox"] += 1
 
@@ -152,64 +151,73 @@ def play_game():
                 state["kill_bear"] += 1
 
         if state["dead_bear"]:
-            print("You feel like the bear is inside your office")
+            print("--- You feel like the bear is inside your office getting ready to attack ---")
+            state["dead_bear_force"] -= 1
+        
+        if state["dead_bear_force"] == 0:
+            print("\n====================================================")
+            print("The bear jumps out of the darkness in your office and grabs your head")
+            print("the bear lean's to your head and bite into it, killing you")
+            print("Game over")
+            print("====================================================\n")
+            return False
 
         # Player action input
         action = input("What do you do? (input action) ").lower().strip()
 
         if action == "left":
-            print("You look at the left door and its buttons")
+            print("--- You look at the left door and its buttons ---")
             state["look_left"] = True
             state["look_right"] = False
         elif action == "right":
-            print("You look at the right door and its buttons")
+            print("--- You look at the right door and its buttons ---")
             state["look_left"] = False
             state["look_right"] = True
         elif action == "light":
             if state["look_left"]:
                 if state["light_on_L"]:
-                    print("You turn the left light off")
+                    print("--- You turn the left light off ---")
                     state["light_on_L"] = False
                 else:
-                    print("You turn the left light on")
+                    print("--- You turn the left light on ---")
                     state["light_on_L"] = True
             elif state["look_right"]:
                 if state["light_on_R"]:
-                    print("You turn the right light off")
+                    print("--- You turn the right light off ---")
                     state["light_on_R"] = False
                 else:
-                    print("You turn the right light on")
+                    print("--- You turn the right light on ---")
                     state["light_on_R"] = True
             else:
-                print("You are not looking at a light button")
+                print("--- You are not looking at a light button ---")
         elif action == "door":
             if state["look_left"]:
                 if state["door_close_L"]:
-                    print("You open the left door")
+                    print("--- You open the left door ---")
                     state["door_close_L"] = False
                 else:
                     if state["dead_bear"]:
-                        print("The door button is not working")
+                        print("--- The door button is not working ---")
                     else:
-                        print("You shut the left door")
+                        print("--- You shut the left door ---")
                         state["door_close_L"] = True
             elif state["look_right"]:
                 if state["door_close_R"]:
-                    print("You open the right door")
+                    print("--- You open the right door ---")
                     state["door_close_R"] = False
                 else:
                     if state["dead_bear"]:
-                        print("The door button is not working")
+                        print("--- The door button is not working ---")
                     else:
-                        print("You shut the right door")
+                        print("--- You shut the right door ---")
                         state["door_close_R"] = True
             else:
-                print("You are not looking at a door")
+                print("--- You are not looking at a door ---")
         elif action == "cams":
             state["look_left"] = False
             state["look_right"] = False
             state["cams_on"] = True
-            print("You turn to your camera systems and turn it on")
+            print("--- You turn to your camera systems and turn it on ---")
 
             # Camera mode loop
             while state["cams_on"]:
@@ -233,21 +241,19 @@ def play_game():
                 # Power drain from doors and lights
                 if state["door_close_L"]:
                     state["power"] -= 1
-                    print("You hear the grinding of the gears in the door to your left")
+                    print("--- You hear the grinding of the gears in the door to your left ---")
                 if state["door_close_R"]:
                     state["power"] -= 1
-                    print("You hear the grinding of the gears in the door to your right")
+                    print("--- You hear the grinding of the gears in the door to your right ---")
                 if state["light_on_L"]:
                     state["power"] -= 1
-                    print("You hear the buzzing of the lights to your left")
+                    print("--- You hear the buzzing of the lights to your left ---")
                 if state["light_on_R"]:
                     state["power"] -= 1
-                    print("You hear the buzzing of the lights to your right")
+                    print("--- You hear the buzzing of the lights to your right ---")
 
                 if state["power"] <= 0:
-                    print("\n====================================================")
-                    print("The power ran out, forcing your cameras off")
-                    print("====================================================\n")
+                    print("--- The power ran out, forcing your cameras off ---")
                     state["power_out"] = True
                     state["cams_on"] = False
 
@@ -271,7 +277,7 @@ def play_game():
                             state["move_fox"] = state["move_fox_dec"] - 1
                             if state["move_fox"] == -0.5:
                                 state["move_fox"] = 0.5
-                            print("You hear a slam at the right door, then a footstep heading away from the door")
+                            print("--- You hear a slam at the left door, then footsteps heading away from the door ---")
                         else:
                             state["kill_fox"] += 1
 
@@ -296,60 +302,70 @@ def play_game():
                         state["kill_bear"] += 1
                     else:
                         if state["kill_bear"] == 3:
-                            print("You hear a series of knocks on the right door")
+                            print("--- You hear a series of knocks on the right door ---")
                         state["kill_bear"] += 1
 
                 if state["dead_bear"]:
-                    print("You feel like the bear is inside your office")
+                    print("--- You feel like the bear is inside your office planing to attack ---")
+                    state["dead_bear_force"] -= 1
+                
+                if state["dead_bear_force"] == 0:
+                   print("\n====================================================")
+                   print("wille you watch your cameras you feel two hands grabing your head")
+                   print("the hands force you to turn toward themself, revaling the bear")
+                   print("the bear lean's to your head and bite into it, killing you")
+                   print("Game over")
+                   print("====================================================\n")
+                   return False
 
                 if state["cams"] == 1:
-                    print("the main stage, the farthest part of this place")
+                    print("--- the main stage, the farthest part of this place ---")
                     if state["move_bear"] == 0:
-                        print("you see the bear in the middle of the stage, inactive")
+                        print("--- you see the bear in the middle of the stage, inactive ---")
                     if state["move_bear"] == 1 or state["move_bear"] == 2:
-                        print("you see the bear in the middle of the stage, eyes staring at the cameras")
+                        print("--- you see the bear in the middle of the stage, eyes staring at the cameras ---")
                         state["move_bear"] -=1
                 if state["cams"] == 2:
-                    print("the main siting area, the top middle of the map")
+                    print("--- the main siting area, the top middle of the map ---")
                     if state["move_bear"] == 3 or state["move_bear"] == 4:
-                        print("you see the bear's eyes hiding in the shadows, staring at the cameras")
+                        print("--- you see the bear's eyes hiding in the shadows, staring at the cameras ---")
                         state["move_bear"]-=1
                 if state["cams"] == 3:
-                    print("the kids area, the top left of the map")
+                    print("--- the kids area, the top left of the map ---")
                     if state["move_fox"] <= 2 and not state["move_fox"] == 0:
-                        print("you see an eye peeking out from the curtains of the mini stage")
+                        print("--- you see an eye peeking out from the curtains of the mini stage ---")
                         state["move_fox"]-=0.5
                     if state["move_fox"] > 2 and state["move_fox"] <= 4:
-                        print("you see the fox's head poping out of the curtain of the mini stage")
+                        print("--- you see the fox's head poping out of the curtain of the mini stage ---")
                         state["move_fox"]-=0.5
                     if state["move_fox"] > 4 and state["move_fox"] <= 6:
-                        print("you see the fox steping out of the slightly open curtain of the mini stage")
+                        print("--- you see the fox steping out of the slightly open curtain of the mini stage ---")
                         state["move_fox"]-=0.5
                     if state["move_fox"] >= 7:
-                        print("you see the open curtain of the mini stage, no fox in sight")
+                        print("--- you see the open curtain of the mini stage, no fox in sight ---")
                         state["move_fox"]-=0.5
                 if state["cams"] == 4:
-                    print("the kitchen, the top right of the map")
+                    print("--- the kitchen, the top right of the map ---")
                     if state["move_bear"] == 5 or state["move_bear"] == 6:
-                        print("you see the bear at the edge of the cameras, head turned to the camera")
+                        print("--- you see the bear at the edge of the cameras, head turned to the camera ---")
                         state["move_bear"]-=1
                 if state["cams"] == 5:
-                    print("the hallway, the middle left of the map")
+                    print("--- the hallway, the middle left of the map ---")
                 if state["cams"] == 6:
-                    print("the storage room, the middle right of the map")
+                    print("--- the storage room, the middle right of the map ---")
                     if state["move_bear"] == 7 or state["move_bear"] == 8:
-                        print("you see the bear hiding behind a shelf, only the eyes are visable")
+                        print("--- you see the bear hiding behind a shelf, only the eyes are visable ---")
                         state["move_bear"]-=1
                 if state["cams"] == 7:
-                    print("the reception area, close to your left door")
+                    print("--- the reception area, close to your left door ---")
                     if state["kill_fox"] >= 1 and not state["fox_warning"]:
-                        print("the fox is dashing and sliding to your office")
+                        print("--- the fox is dashing and sliding to your office ---")
                         state["kill_fox"] = 2
                         state["fox_warning"] = True
                 if state["cams"] == 8:
-                    print("the staff room, close to your right door")
+                    print("--- the staff room, close to your right door ---")
                     if state["move_bear"] == 9 or state["move_bear"] == 10:
-                        print("you see the bear by the door leading to your office, looking at where you stand")
+                        print("--- you see the bear by the door leading to your office, looking at where you stand ---")
                         state["move_bear"]-=1
 
                 cam_action = input("Camera mode - enter cam number (1-8) or 'exit' to leave cameras: ").lower().strip()
@@ -363,20 +379,20 @@ def play_game():
                         print("Game over")
                         print("====================================================\n")
                         return False
-                    print("You turn off the cameras")
+                    print("--- You turn off the cameras ---")
                 elif cam_action in ["1", "2", "3", "4", "5", "6", "7", "8"]:
                     state["cams"] = int(cam_action)
                     print(f"you switch to cameras {state['cams']}")
                 else:
                     print("Invalid camera input")
         elif action == "wait":
-            print("You wait as time passes")
+            print("--- You wait as time passes ---")
         else:
-            print("Invalid input, you wait as time passes")
+            print("--- Invalid input, you wait as time passes ---")
 
         #Power out stage
         while state["power_out"]:
-            print("the room was dark with all the doors open")
+            print("--- the room was dark with all the doors open ---")
             state["time"]-=1
             if state["time"]== 60:
                 print("--- it's now 4am, but you feel like its to late ---")
@@ -389,7 +405,7 @@ def play_game():
                 print(f"Leftover power: {state['power']}/153")
                 print("====================================================\n")
                 return True
-            print("you see two glowing eyes by you door")
+            print("--- you see two glowing eyes by you door ---")
             state["time"]-=1
             if state["time"]== 60:
                 print("--- it's now 4am, but you feel like its to late ---")
@@ -402,7 +418,7 @@ def play_game():
                 print(f"Leftover power: {state['power']}/153")
                 print("====================================================\n")
                 return True
-            print("your hear some music coming from the eye")
+            print("--- your hear some music coming from the eye ---")
             state["time"]-=1
             if state["time"]== 60:
                 print("--- it's now 4am, but you feel like its to late ---")
@@ -413,7 +429,7 @@ def play_game():
                 print("you win")
                 print(f"Leftover power: {state['power']}/153")
                 return True
-            print("the eyes are now infornt of you")
+            print("--- the eyes are now infornt of you ---")
             state["time"]-=1
             if state["time"]== 60:
                 print("--- it's now 4am, but you feel like its to late ---")
@@ -426,7 +442,7 @@ def play_game():
                 print(f"Leftover power: {state['power']}/153")
                 print("====================================================\n")
                 return True
-            print("the eyes are now gone")
+            print("--- the eyes are now gone ---")
             state["time"]-=1
             if state["time"]== 60:
                 print("--- it's now 4am, but you feel like its to late ---")
@@ -464,5 +480,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
