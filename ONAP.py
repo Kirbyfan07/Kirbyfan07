@@ -312,18 +312,18 @@ def play_game():
                         state["move_bear"]-=1
                 if state["cams"] == 3:
                     print("the kids area, the top left of the map")
-                if state["move_fox"] <= 2 and not state["move_fox"] == 0:
-                    print("you see an eye peeking out from the curtains of the mini stage")
-                    state["move_fox"]-=0.5
-                if state["move_fox"] > 2 and state["move_fox"] <= 4:
-                    print("you see the fox's head poping out of the curtain of the mini stage")
-                    state["move_fox"]-=0.5
-                if state["move_fox"] > 4 and state["move_fox"] <= 6:
-                    print("you see the fox steping out of the slightly open curtain of the mini stage")
-                    state["move_fox"]-=0.5
-                if state["move_fox"] >= 7:
-                    print("you see the open curtain of the mini stage, no fox in sight")
-                    state["move_fox"]-=0.5
+                    if state["move_fox"] <= 2 and not state["move_fox"] == 0:
+                        print("you see an eye peeking out from the curtains of the mini stage")
+                        state["move_fox"]-=0.5
+                    if state["move_fox"] > 2 and state["move_fox"] <= 4:
+                        print("you see the fox's head poping out of the curtain of the mini stage")
+                        state["move_fox"]-=0.5
+                    if state["move_fox"] > 4 and state["move_fox"] <= 6:
+                        print("you see the fox steping out of the slightly open curtain of the mini stage")
+                        state["move_fox"]-=0.5
+                    if state["move_fox"] >= 7:
+                        print("you see the open curtain of the mini stage, no fox in sight")
+                        state["move_fox"]-=0.5
                 if state["cams"] == 4:
                     print("the kitchen, the top right of the map")
                     if state["move_bear"] == 5 or state["move_bear"] == 6:
@@ -460,3 +460,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
