@@ -97,7 +97,9 @@ def play_game():
 
         # Check power out
         if state["power"] <= 0:
+            print("\n====================================================")
             print("The power ran out")
+            print("====================================================\n")
             state["power_out"] = True
 
         # Fox movement and attack logic
@@ -243,7 +245,9 @@ def play_game():
                     print("You hear the buzzing of the lights to your right")
 
                 if state["power"] <= 0:
+                    print("\n====================================================")
                     print("The power ran out, forcing your cameras off")
+                    print("====================================================\n")
                     state["power_out"] = True
                     state["cams_on"] = False
 
@@ -460,4 +464,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
