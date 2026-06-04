@@ -220,11 +220,11 @@ def play_game():
                     print("--- It's now 5am, The Bear is moving ---")
                     state["bear"] = 1
                 elif state["time"] <= 0:
-                    ("\n====================================================")
+                    print("\n====================================================")
                     print("It's now 6am, you turn off the cameras because your shift has ended")
                     print("You win!")
                     print(f"Leftover power: {state['power']}/153")
-                    ("====================================================\n")
+                    print("====================================================\n")
                     state["cams_on"] = False
                     return True
 
@@ -379,11 +379,11 @@ def play_game():
             if state["time"]==30:
                 print("--- it's now 5am, but you feel like it's to late ---")
             if state["time"]==0:
-                ("\n====================================================")
+                print("\n====================================================")
                 print("it's now 6am, your shift has ended, just in time")
                 print("you win")
                 print(f"Leftover power: {state['power']}/153")
-                ("====================================================\n")
+                print("====================================================\n")
                 return True
             print("you see two glowing eyes by you door")
             state["time"]-=1
@@ -392,11 +392,11 @@ def play_game():
             if state["time"]==30:
                 print("--- it's now 5am, but you feel like it's to late ---")
             if state["time"]==0:
-                ("\n====================================================")
+                print("\n====================================================")
                 print("it's now 6am, your shift has ended, just in time")
                 print("you win")
                 print(f"Leftover power: {state['power']}/153")
-                ("====================================================\n")
+                print("====================================================\n")
                 return True
             print("your hear some music coming from the eye")
             state["time"]-=1
@@ -416,11 +416,11 @@ def play_game():
             if state["time"]==30:
                 print("--- it's now 5am, but you feel like it's to late ---")
             if state["time"]==0:
-                ("\n====================================================")
+                print("\n====================================================")
                 print("it's now 6am, your shift has ended, just in time")
                 print("you win")
                 print(f"Leftover power: {state['power']}/153")
-                ("====================================================\n")
+                print("====================================================\n")
                 return True
             print("the eyes are now gone")
             state["time"]-=1
@@ -429,15 +429,16 @@ def play_game():
             if state["time"]==30:
                 print("--- it's now 5am, but you feel like it's to late ---")
             if state["time"]==0:
-                ("\n====================================================")
+                print("\n====================================================")
                 print("it's now 6am, your shift has ended, just in time")
                 print("you win")
                 print(f"Leftover power: {state['power']}/153")
-                ("====================================================\n")
+                print("====================================================\n")
                 return True
             print("\n====================================================")
             print("a hand grabs your head, you look up and see the eyes had returned, they slam you onto the floor")
             print("the force of the slam has killed you")
+            print("Game over")
             print("====================================================\n")
             return False
 def main():
