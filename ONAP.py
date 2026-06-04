@@ -22,7 +22,6 @@ def initialize_game():
         "door_close_R": False,
         "cams_on": False,
         "power_out": False,
-        "bear": 0,
     }
     return state
 
@@ -228,7 +227,7 @@ def play_game():
                     print("--- It's now 4am, The Fox is waking up ---")
                 elif state["time"] == 30:
                     print("--- It's now 5am, The Bear is moving ---")
-                    state["bear"] = 1
+                    state["move_bear"] = 1
                 elif state["time"] <= 0:
                     print("\n====================================================")
                     print("It's now 6am, you turn off the cameras because your shift has ended")
