@@ -60,12 +60,12 @@ def play_game():
         state["time"] -= 1
 
         if state["time"] == 90:
-            print("It's 3am, the start of your shift")
+            print("--- It's 3am, the start of your shift ---")
         elif state["time"] == 60:
-            print("It's now 4am")
+            print("--- It's now 4am, The Fox is waking up ---")
             state["move_fox"] = 1
         elif state["time"] == 30:
-            print("It's now 5am")
+            print("--- It's now 5am, The Bear begins moving ---")
             state["move_bear"] = 1
             state["bear"] = 1
         elif state["time"] <= 0:
@@ -125,9 +125,11 @@ def play_game():
                     state["kill_fox"] += 1
 
         if state["dead_fox"]:
+            print("\n====================================================")
             print("The fox ran and jumped onto you with its jaw open...")
             print("It started ripping you to shreds, killing you")
             print("Game over")
+            print("====================================================\n")
             return False  # Death
 
         # Bear movement and attack logic
@@ -213,9 +215,9 @@ def play_game():
                 state["power"] -= 1
 
                 if state["time"] == 60:
-                    print("It's now 4am")
+                    print("--- It's now 4am, The Fox is waking up ---")
                 elif state["time"] == 30:
-                    print("It's now 5am")
+                    print("--- It's now 5am, The Bear is moving ---")
                     state["bear"] = 1
                 elif state["time"] <= 0:
                     ("\n====================================================")
@@ -270,9 +272,11 @@ def play_game():
                             state["kill_fox"] += 1
 
                 if state["dead_fox"]:
+                    print("\n====================================================")
                     print("While on the cameras the fox ran into you and slammed you into the camera screen...")
                     print("The shards from the screen cause you to bleed to death")
                     print("Game over")
+                    print("====================================================\n")
                     return False
 
                 if state["move_bear"] != 0:
@@ -347,6 +351,14 @@ def play_game():
                 cam_action = input("Camera mode - enter cam number (1-8) or 'exit' to leave cameras: ").lower().strip()
                 if cam_action == "exit":
                     state["cams_on"] = False
+                    if state["dead_bear"]:
+                        print("\n====================================================")
+                        print("as you turn off your cameras you feel two hands grabing your head")
+                        print("the hands force you to turn toward themself, revaling the bear")
+                        print("the bear lean's to your head and bite into it, killing you")
+                        print("Game over")
+                        print("====================================================\n")
+                        return False
                     print("You turn off the cameras")
                 elif cam_action in ["1", "2", "3", "4", "5", "6", "7", "8"]:
                     state["cams"] = int(cam_action)
@@ -363,9 +375,9 @@ def play_game():
             print("the room was dark with all the doors open")
             state["time"]-=1
             if state["time"]== 60:
-                print("it's now 4am, but you feel like its to late")
+                print("--- it's now 4am, but you feel like its to late ---")
             if state["time"]==30:
-                print("it's now 5am, but you feel like it's to late")
+                print("--- it's now 5am, but you feel like it's to late ---")
             if state["time"]==0:
                 ("\n====================================================")
                 print("it's now 6am, your shift has ended, just in time")
@@ -376,9 +388,9 @@ def play_game():
             print("you see two glowing eyes by you door")
             state["time"]-=1
             if state["time"]== 60:
-                print("it's now 4am, but you feel like its to late")
+                print("--- it's now 4am, but you feel like its to late ---")
             if state["time"]==30:
-                print("it's now 5am, but you feel like it's to late")
+                print("--- it's now 5am, but you feel like it's to late ---")
             if state["time"]==0:
                 ("\n====================================================")
                 print("it's now 6am, your shift has ended, just in time")
@@ -389,9 +401,9 @@ def play_game():
             print("your hear some music coming from the eye")
             state["time"]-=1
             if state["time"]== 60:
-                print("it's now 4am, but you feel like its to late")
+                print("--- it's now 4am, but you feel like its to late ---")
             if state["time"]==30:
-                print("it's now 5am, but you feel like it's to late")
+                print("--- it's now 5am, but you feel like it's to late ---")
             if state["time"]==0:
                 print("it's now 6am, your shift has ended, just in time")
                 print("you win")
@@ -400,9 +412,9 @@ def play_game():
             print("the eyes are now infornt of you")
             state["time"]-=1
             if state["time"]== 60:
-                print("it's now 4am, but you feel like its to late")
+                print("--- it's now 4am, but you feel like its to late ---")
             if state["time"]==30:
-                print("it's now 5am, but you feel like it's to late")
+                print("--- it's now 5am, but you feel like it's to late ---")
             if state["time"]==0:
                 ("\n====================================================")
                 print("it's now 6am, your shift has ended, just in time")
@@ -413,9 +425,9 @@ def play_game():
             print("the eyes are now gone")
             state["time"]-=1
             if state["time"]== 60:
-                print("it's now 4am, but you feel like its to late")
+                print("--- it's now 4am, but you feel like its to late ---")
             if state["time"]==30:
-                print("it's now 5am, but you feel like it's to late")
+                print("--- it's now 5am, but you feel like it's to late ---")
             if state["time"]==0:
                 ("\n====================================================")
                 print("it's now 6am, your shift has ended, just in time")
@@ -423,8 +435,10 @@ def play_game():
                 print(f"Leftover power: {state['power']}/153")
                 ("====================================================\n")
                 return True
+            print("\n====================================================")
             print("a hand grabs your head, you look up and see the eyes had returned, they slam you onto the floor")
             print("the force of the slam has killed you")
+            print("====================================================\n")
             return False
 def main():
     while True:
