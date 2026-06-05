@@ -5,7 +5,7 @@ def initialize_game():
         "cams": 1,
         "move_rabbit": 0,
         "kill_rabbit": 0,
-        "dead_rabbit": 0,
+        "dead_rabbit": False,
         "move_rabbit_dec": 0,
         "dead_rabbit_force": 6,
         "move_bird": 0,
@@ -580,4 +580,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
