@@ -91,14 +91,15 @@ def play_game():
         if state["light_on_L"]:
             state["power"] -= 1
             print("-- You hear the buzzing of the lights to your left --")
+            if state ["look_left"]:
+                if state["kill_rabbit"] >=1 and not state["dead_rabbit"]:
+                    print("-- you see the rabbit tapping on the window --")
         if state["light_on_R"]:
             state["power"] -= 1
             print("-- You hear the buzzing of the lights to your right --")
             if state ["look_right"]:
-                if state ["move_bear"] >= 11 and not state ["kill_bear"]:
+                if state ["kill_bear"] >= 1 and not state ["dead_bear"]:
                     print("-- you see the bear standing at the door, it looks looks like it not going to leave --")
-                if state ["move_bear"] >= 11 and state ["kill_bear"]:
-                    print("-- the bear is gone? --")
 
         # Check power out
         if state["power"] <= 0:
@@ -241,7 +242,7 @@ def play_game():
                     print("-- You open the left door --")
                     state["door_close_L"] = False
                 else:
-                    if state["dead_bear"]:
+                    if state["dead_bear"] or state["dead_rabbit"]:
                         print("-- The door button is not working --")
                     else:
                         print("-- You shut the left door --")
@@ -251,7 +252,7 @@ def play_game():
                     print("-- You open the right door --")
                     state["door_close_R"] = False
                 else:
-                    if state["dead_bear"]:
+                    if state["dead_bear"] or state["dead_rabbit"]:
                         print("-- The door button is not working --")
                     else:
                         print("-- You shut the right door --")
@@ -407,14 +408,14 @@ def play_game():
                         state["move_bear"] -=1
                 if state["cams"] == 2:
                     print("-- the main siting area, the top middle of the map --")
-                    if state["move_rabbit"] <=2 and state["move_rabbit"] >3:
+                    if state["move_rabbit"] <=2 and state["move_rabbit"] >1:
                         print("-- the rabbit is by a table messing with some party hats --")
                     if state["move_bear"] == 3 or state["move_bear"] == 4:
                         print("-- you see the bear's eyes hiding in the shadows, staring at the cameras --")
                         state["move_bear"]-=1
                 if state["cams"] == 3:
                     print("-- the kids area, the top left of the map ---")
-                    if state["move_rabbit"] <=3 and state["move_rabbit"] >4:
+                    if state["move_rabbit"] <=3 and state["move_rabbit"] >2:
                         print("-- the rabbit is in the ballpit, trying to entertain themself --")
                     if state["move_fox"] == 0:
                         print("-- the mini stage curtains are fully closed --")
@@ -436,6 +437,8 @@ def play_game():
                         state["move_bear"]-=1
                 if state["cams"] == 5:
                     print("-- the hallway of fame, the middle left of the map --")
+                    if state["move_rabbit"] <=4 and state["move_rabbit"] >3:
+                        print("-- the rabbit is trying to skip across the hallway --")
                 if state["cams"] == 6:
                     print("-- the storage room, the middle right of the map --")
                     if state["move_bear"] == 7 or state["move_bear"] == 8:
@@ -443,6 +446,8 @@ def play_game():
                         state["move_bear"]-=1
                 if state["cams"] == 7:
                     print("-- the reception area, close to your left door --")
+                    if state["move_rabbit"] <=5 and state["move_rabbit"] >4:
+                        print("the rabbit is messing with the bell on the reception deck")
                     if state["kill_fox"] >= 1 and not state["fox_warning"]:
                         print("-- the fox is dashing and sliding to your office --")
                         state["kill_fox"] = 2
