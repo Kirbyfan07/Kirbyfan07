@@ -116,7 +116,6 @@ def play_game():
                     print("-- you see the rabbit tapping on the window --")
     
         if is_close(state["move_rabbit"], [6, 6.2]):
-            state["kill_rabbit"] = 1
         if state["kill_rabbit"] >= 1:
             if not state["door_close_L"]:
                 if state["kill_rabbit"] == 5:
