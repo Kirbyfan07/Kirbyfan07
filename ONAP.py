@@ -91,15 +91,9 @@ def play_game():
         if state["light_on_L"]:
             state["power"] -= 1
             print("-- You hear the buzzing of the lights to your left --")
-            if state ["look_left"]:
-                if state["kill_rabbit"] >=1 and not state["dead_rabbit"]:
-                    print("-- you see the rabbit tapping on the window --")
         if state["light_on_R"]:
             state["power"] -= 1
             print("-- You hear the buzzing of the lights to your right --")
-            if state ["look_right"]:
-                if state ["kill_bear"] >= 1 and not state ["dead_bear"]:
-                    print("-- you see the bear standing at the door, it looks looks like it not going to leave --")
 
         # Check power out
         if state["power"] <= 0:
@@ -109,7 +103,19 @@ def play_game():
         # Rabbit movement and attack logic
         state["move_rabbit"]+= 0.4
         print(state["move_rabbit"])
-        if state["move_rabbit"] in [6, 6.2]:
+        
+        def is_close(value, target_list, tolerance=0.15):
+            for target in target_list:
+                if abs(value - target) < tolerance:
+                    return True
+            return False
+
+        if state["light_on_L"]:
+            if state ["look_left"]:
+                if state["kill_rabbit"] >=1 and not state["dead_rabbit"]:
+                    print("-- you see the rabbit tapping on the window --")
+    
+        if is_close(state["move_rabbit"], [6, 6.2]):
             state["kill_rabbit"] = 1
         if state["kill_rabbit"] >= 1:
             if not state["door_close_L"]:
@@ -124,7 +130,10 @@ def play_game():
                     state["move_rabbit"] = state["move_rabbit_dec"] - 1
                     if state["move_rabbit"] != 0:
                         state["move_rabbit"] *= -1
-                    print("-- You hear a bang at the left door, then stomps heading away from the door --")
+                    if state["look_left"]:
+                        print("-- You see the rabbit kicking the door, then it stomps away in disapointment --")
+                    else:
+                        print("-- You hear a bang at the left door, then stomps heading away from the door --")
                 else:
                     state["kill_rabbit"] += 1
                 
@@ -140,6 +149,7 @@ def play_game():
             print("Game over")
             print("====================================================\n")
             return False
+        
 
         # Fox movement and attack logic
         if state["move_fox"] != 0:
@@ -182,6 +192,10 @@ def play_game():
             state["move_bear"] += 1
         if state["move_bear"] == 11:
             state["kill_bear"] = 1
+        
+        if state ["look_right"]:
+            if state ["kill_bear"] >= 1 and not state ["dead_bear"]:
+                print("-- you see the bear standing at the door, it looks looks like it not going to leave --")
 
         if state["kill_bear"] >= 1:
             if not state["door_close_R"]:
@@ -303,8 +317,16 @@ def play_game():
 
                 # Rabbit, bird, fox and bear logic repeated for cameras mode
                 state["move_rabbit"]+= 0.4
-                if state["move_rabbit"] in [6, 6.2]:
+                
+                def is_close(value, target_list, tolerance=0.15):
+                    for target in target_list:
+                        if abs(value - target) < tolerance:
+                            return True
+                    return False
+
+                if is_close(state["move_rabbit"], [6, 6.2]):
                     state["kill_rabbit"] = 1
+
                 if state["kill_rabbit"] >= 1:
                     if not state["door_close_L"]:
                         if state["kill_rabbit"] == 5:
