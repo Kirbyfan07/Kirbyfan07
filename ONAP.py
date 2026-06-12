@@ -172,7 +172,7 @@ def play_game():
                     if state["move_fox"] == -0.5:
                         state["move_fox"] = 0.5
                     if state["light_on_L"] and state["look_left"]:
-                        print("-- you hear a slam at the left door, the see the fox walk away from the door --")
+                        print("-- you see the fox run into the left door, then angered walk away from the door --")
                     else:
                         print("-- You hear a slam at the left door, then footsteps heading away from the door --")
                 else:
@@ -191,10 +191,11 @@ def play_game():
             state["move_bear"] += 1
         if state["move_bear"] == 11:
             state["kill_bear"] = 1
-        
-        if state ["look_right"]:
-            if state ["kill_bear"] >= 1 and not state ["dead_bear"]:
-                print("-- you see the bear standing at the door, it looks looks like it not going to leave --")
+
+        if state["light_on_R"]:    
+            if state ["look_right"]:
+                if state ["kill_bear"] >= 1 and not state ["dead_bear"]:
+                    print("-- you see the bear standing at the door, it looks looks like it not going to leave --")
 
         if state["kill_bear"] >= 1:
             if not state["door_close_R"]:
@@ -204,7 +205,10 @@ def play_game():
                 state["kill_bear"] += 1
             else:
                 if state["kill_bear"] == 3:
-                    print("You hear a series of knocks on the right door")
+                    if state["look_right"] and state["light_on_R"]:
+                        print("-- You see the bear knocking on the right door --")
+                    else:
+                        print("-- You hear a series of knocks on the right door --")
                 state["kill_bear"] += 1
 
         if state["dead_bear"]:
