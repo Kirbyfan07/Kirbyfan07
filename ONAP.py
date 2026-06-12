@@ -108,37 +108,35 @@ def play_game():
         
         # Rabbit movement and attack logic
         state["move_rabbit"]+= 0.4
+        print(state["move_rabbit"])
         if state["move_rabbit"] in [6, 6.2]:
             state["kill_rabbit"] = 1
-        
         if state["kill_rabbit"] >= 1:
             if not state["door_close_L"]:
                 if state["kill_rabbit"] == 5:
                     state["kill_rabbit"] = 0
                     state["dead_rabbit"] = True
-                state["kill_rabbit"] += 1
-        else:
+                    state["kill_rabbit"] += 1
+            else:
                 if state["kill_rabbit"] == 5:
                     state["kill_rabbit"] = 0
                     state["move_rabbit_dec"] = state["move_rabbit"] - 0.4
                     state["move_rabbit"] = state["move_rabbit_dec"] - 1
                     if state["move_rabbit"] != 0:
                         state["move_rabbit"] *= -1
-                    if state["light_on_L"] and state["look_left"]:
-                        print("-- you hear bang at the left door, the see the rabbit stomping away from the door --")
-                    else:
-                        print("-- You hear a bang at the left door, then stomps heading away from the door --")
+                    print("-- You hear a bang at the left door, then stomps heading away from the door --")
                 else:
                     state["kill_rabbit"] += 1
-        
+                
         if state["dead_rabbit"]:
             print("-- You feel like the rabbit is inside your office getting ready to attack --")
             state["dead_rabbit_force"] -= 1
-        
+                
         if state["dead_rabbit_force"] == 0:
             print("\n====================================================")
-            print("the rabbit jump out of the shadows and knocks you over")
-            print("it then starts jumping on you, squishing you to death")
+            print("you get knocks over onto the floor while you where watching the cams")
+            print("when you turn to see what knocked you over you see the rabbit in the air")
+            print("it land on your back and starts jumping on you, squishing you to death")
             print("Game over")
             print("====================================================\n")
             return False
