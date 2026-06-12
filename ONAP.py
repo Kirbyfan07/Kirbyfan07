@@ -103,7 +103,8 @@ def play_game():
         # Rabbit movement and attack logic
         state["move_rabbit"]+= 0.4
         print(state["move_rabbit"])
-        
+
+        # Anti floating point measurement
         def is_close(value, target_list, tolerance=0.15):
             for target in target_list:
                 if abs(value - target) < tolerance:
