@@ -1,0 +1,69 @@
+<Team_terms.html>
+<html lang="en">
+
+<head>
+  <title>Competitive Pokémon singles - The basics</title>
+  <meta name="description" content="Learn the basics of competitive Pokémon singles.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Pokémon roles and team archetypes<h1>
+      <nav>
+        <ul>
+          <li><a href="Pokemon_basic.html"></a></li>
+          <li><a href="Team_terms.html" aria-current="page">Pokémon roles and team archetypes </a></li>
+          <li><a href="Batle Terms.html"></a></li>
+        </ul>
+      </nav>
+  </header>
+
+  <main>
+    <article>
+      <h2>Pokémon roles</h2>
+      <p>When choosing your Pokémon for a team each Pokémon needs to fulfill a role, that role can range form setting something up to help your team to removing a threat and some must more.</p>
+    </article>
+
+    <section>
+      <h2>Basic Pokémon archetypes</h2>
+      <p>A Pokémon can be fulfill multiple of the following role</p>
+      <ul>
+        <li>Dedicated Lead, a Pokémon who you will almost always lead the battle.</li>
+        <li>Glass Cannon, a Pokémon who has high offensive power but is very defensively frail.</li>
+        <li>Sweeper, a Pokémon who deals massive damage and bring down an opponent's team, some setup a stat boost to do this</li>
+        <li>Phazer, a Pokémon who forces opponent to switch, manly to break stall and setup sweepers</li>
+        <li>Pivot (Defensive), a Pokémon that is generally only used for switching, they can usually take little damage as they switch in, and the opposing switch they force allows the player to switch again safely to another Pokémon, stop opponents momentum by being difficult to break past.</li>
+        <li>Pivot (Offensive), a Pokémon that is generally only used for switching, they can usually take little damage as they switch in, and the opposing switch they force allows the player to switch again safely to another Pokémon, giving's you momentum by threatening a KO on the opponent.</li>
+        <li>Hazard remover, a Pokémon that remove entry hazard, this is by using Rapid Spin or Defog.</li>
+        <li>SpinBlocker, a ghost type Pokémon who block Rapid Spin.</li>
+        <li>Status Absorber, a Pokémon who can avoid, remove, or use to its advantage one or more status effects.</li>
+        <li>Supporter, a Pokémon who uses non-offensive moves which benefit the team.</li>
+        <li>Tank, a Pokémon intended to take either physical or special attacks and hit back, but does not have to do so consistently over the entire course of a match.</li>
+        <li>Wall, a Pokémon intended to take either physical or special attacks extremely effectively and consistently over the course of a battle.</li>
+        <li>Wallbreaker, an Pokémon meant specifically for crushing walls rather than sweeping.</li>
+        <li>Stallbreaker, a Pokémon that immediately threatens stall teams by preventing the Pokémon commonly found on those teams from executing their standard strategies</li>
+        <li>Trapper, a Pokémon intended to corner the opponent and put them into a "lose-lose" situation, where it is dangerous for them to both switch out or stay in and attack</li>
+        <li>Utility Pokémon, a Pokémon who is capable of performing a large variety of tasks, and is usually tailored to one specific task that the team requires.</li>
+        <li>Utility Counter, a defensive Pokémon capable of being tailored to switch in and counter a variety of different threats, but not all at once.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Basic team archetypes</h2>
+      <p>Here are 5 main archetypes that applies to all tiers</p>
+      <li>Hyper Offensive, breaks down the opposing team with brute strength using Wallbreakers and Setup Sweepers, clearing a winning path for another teammate to win.</li>
+      <li>Bulky Offensive, rely on Offensive and Defensive Pivots to safely bring in Wallbreakers and Setup Sweepers, allowing them to execute an attack safely.</li>
+      <li>Balance, a middle ground between hyper offense and stall, has a strong defensive backbone that can act as Defensive pivots and Strong Wallbreakers that can punch holes through the opposing team.</li>
+      <li>Semi Stall, defined through its use of multiple Walls to support one bulky Setup Sweeper.</li>
+      <li>Stall, the slowest archetype to use and defined through its main win condition being residual damage provided by bulky Walls to wear down the opposing team slowly.</li>
+  </main>
+
+  <footer>
+    <p>Go to <a href="https://play.pokemonshowdown.com/" target="_blank" rel="noopener noreferrer">Pokémon Showdown</a> to start play.</p>
+  </footer>
+
+</body>
+</html>
