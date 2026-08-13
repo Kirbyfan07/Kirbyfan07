@@ -68,6 +68,7 @@
       <p>IVs range form 0-31 per stat, the more IV you have in a stat, the higher the stat will be.</p>
       <p>EVs range from 0-255 per stat (0-252 per stat if you don't want to waste any), however you can only have a max of 510 EVs in a Pokémon. every 4 EVs gives that Pokémon a +1 in that stat.</p>
       <p>Natures are a modifier on a Pokémon that boost one stat but lower another. below is a chat with all the Natures.</p>
+      <img scr="images/Pokemon Nature chart.png" ant="Pokémon Nature chart" />
   <article>
 
     
