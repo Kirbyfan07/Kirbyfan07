@@ -54,11 +54,23 @@
     <section>
       <h2>Basic team archetypes</h2>
       <p>Here are 5 main archetypes that applies to all tiers</p>
-      <li>Hyper Offensive, breaks down the opposing team with brute strength using Wallbreakers and Setup Sweepers, clearing a winning path for another teammate to win.</li>
-      <li>Bulky Offensive, rely on Offensive and Defensive Pivots to safely bring in Wallbreakers and Setup Sweepers, allowing them to execute an attack safely.</li>
-      <li>Balance, a middle ground between hyper offense and stall, has a strong defensive backbone that can act as Defensive pivots and Strong Wallbreakers that can punch holes through the opposing team.</li>
-      <li>Semi Stall, defined through its use of multiple Walls to support one bulky Setup Sweeper.</li>
-      <li>Stall, the slowest archetype to use and defined through its main win condition being residual damage provided by bulky Walls to wear down the opposing team slowly.</li>
+        <ul>
+          <li>Hyper Offensive, breaks down the opposing team with brute strength using Wallbreakers and Setup Sweepers, clearing a winning path for another teammate to win.</li>
+          <li>Bulky Offensive, rely on Offensive and Defensive Pivots to safely bring in Wallbreakers and Setup Sweepers, allowing them to execute an attack safely.</li>
+          <li>Balance, a middle ground between hyper offense and stall, has a strong defensive backbone that can act as Defensive pivots and Strong Wallbreakers that can punch holes through the opposing team.</li>
+          <li>Semi Stall, defined through its use of multiple Walls to support one bulky Setup Sweeper.</li>
+          <li>Stall, the slowest archetype to use and defined through its main win condition being residual damage provided by bulky Walls to wear down the opposing team slowly.</li>
+        </ul>
+    <section>
+
+    <article>
+      <h2>IVs, EVs and Natures</h2>
+      <p>IVs range form 0-31 per stat, the more IV you have in a stat, the higher the stat will be.</p>
+      <p>EVs range from 0-255 per stat (0-252 per stat if you don't want to waste any), however you can only have a max of 510 EVs in a Pokémon. every 4 EVs gives that Pokémon a +1 in that stat.</p>
+      <p>Natures are a modifier on a Pokémon that boost one stat but lower another. below is a chat with all the Natures.</p>
+  <article>
+
+    
   </main>
 
   <footer>
