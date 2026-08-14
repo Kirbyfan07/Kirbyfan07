@@ -61,7 +61,7 @@
           <li>Semi Stall, defined through its use of multiple Walls to support one bulky Setup Sweeper.</li>
           <li>Stall, the slowest archetype to use and defined through its main win condition being residual damage provided by bulky Walls to wear down the opposing team slowly.</li>
         </ul>
-    <section>
+    </section>
 
     <article>
       <h2>IVs, EVs and Natures</h2>
