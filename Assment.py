@@ -22,10 +22,10 @@ while start == True:
         print("Starting quiz (hard)")
     #see the last saved score pre quiz
     elif quiz_chose == "score":
-        print("Last saved score for easy is " + score_e + " out of 8")
-        print("Last saved score for hard is " + score_h + " out of 8")
+        print("Last saved score for easy is ",score_e," out of 8")
+        print("Last saved score for hard is ",score_h," out of 8")
     #kill progain
-    elif quiz_chose == quit:
+    elif quiz_chose == "quit":
         print("Bye")
         start = False
     #failsafe
