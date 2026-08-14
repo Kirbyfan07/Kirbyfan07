@@ -1,0 +1,185 @@
+```css
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header, main, footer {
+    max-width: 960px;
+    margin: auto;
+    padding: 1em;
+}
+
+header {
+    background-color: #004d40;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a[aria-current="page"] {
+    background-color: #00796b;
+    outline: none;
+}
+
+nav ul li a:focus {
+    outline: 3px solid #ffab00;
+}
+
+main section {
+    margin-bottom: 2em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0.5em 0;
+}
+
+.caption {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #666;
+}
+
+table {
+    width: 100%;
+    /* Collapses borders into a single border (removes double borders) */
+    border-collapse: collapse;
+    /* Adds 1em of space above the table */
+    margin-top: 1em;
+}
+
+table caption {
+    /* Makes the table caption text bold */
+    font-weight: bold;
+    /* Adds 0.5em of space below the caption */
+    margin-bottom: 0.5em;
+    /* Aligns the caption text to the left */
+    text-align: left;
+}
+
+table, th, td {
+    /* Adds a 1px solid light gray border around the table, headers, and cells */
+    border: 1px solid #ccc;
+}
+
+th, td {
+    /* Adds 0.75em of padding inside table headers and cells */
+    padding: 0.75em;
+    /* Aligns text to the left inside table headers and cells */
+    text-align: left;
+}
+
+/* Form styling */
+form {
+    /* Uses Flexbox to arrange form elements in a column */
+    display: flex;
+    /* Stacks form elements vertically */
+    flex-direction: column;
+    /* Limits the form width to 400px for better readability */
+    max-width: 400px;
+}
+
+label {
+    /* Adds 1em of space above each label */
+    margin-top: 1em;
+    /* Adds 0.3em of space below each label */
+    margin-bottom: 0.3em;
+    /* Makes the label text bold */
+    font-weight: bold;
+}
+
+input, textarea {
+    /* Adds 0.5em of padding inside input fields and textareas */
+    padding: 0.5em;
+    /* Sets the font size to 1em (inherits from body) */
+    font-size: 1em;
+    /* Adds a 1px solid light gray border */
+    border: 1px solid #ccc;
+    /* Rounds the corners of input fields and textareas */
+    border-radius: 4px;
+}
+
+input:focus, textarea:focus {
+    /* Changes the border color to teal when the input is focused */
+    border-color: #00796b;
+    /* Removes the default focus outline */
+    outline: none;
+}
+
+/* Button styling with hover transition */
+button {
+    /* Adds 1.5em of space above the button */
+    margin-top: 1.5em;
+    /* Adds 0.75em of padding inside the button */
+    padding: 0.75em;
+    /* Sets a teal background color for the button */
+    background-color: #00796b;
+    /* Sets the text color to white */
+    color: white;
+    /* Removes the default button border */
+    border: none;
+    /* Rounds the corners of the button */
+    border-radius: 4px;
+    /* Sets the font size to 1em (inherits from body) */
+    font-size: 1em;
+    /* Changes the cursor to a pointer when hovering over the button */
+    cursor: pointer;
+    /* Smoothly animates background color changes over 0.3 seconds */
+    transition: background-color 0.3s ease;
+}
+
+button:hover, button:focus {
+    /* Darkens the button background when hovering or focusing */
+    background-color: #004d40;
+    /* Removes the default focus outline */
+    outline: none;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    /* When the screen width is 600px or less... */
+    nav ul {
+        /* Changes the navigation to a vertical column */
+        flex-direction: column;
+        /* Reduces the gap between navigation items */
+        gap: 0.5em;
+    }
+
+    main, header, footer {
+        /* Reduces padding on smaller screens to save space */
+        padding: 0.5em;
+    }
+
+    form {
+        /* Allows the form to take full width on small screens */
+        max-width: 100%;
+    }
+}
+```
+
