@@ -70,8 +70,6 @@
       <p>Natures are a modifier on a Pokémon that boost one stat but lower another. below is a chat with all the Natures.</p>
       <img scr="images/Pokemon Nature chart.png" ant="Pokémon Nature chart" />
     </article>
-
-    
   </main>
 
   <footer>
